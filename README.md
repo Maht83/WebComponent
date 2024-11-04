@@ -1,7 +1,7 @@
 # WebComponent
 
 ## Aperçu du Projet
-Le projet combine un générateur de logo interactif avec un lecteur audio doté d'un visualiseur. Les utilisateurs peuvent personnaliser le logo en modifiant le texte, les couleurs, les polices, les formes, et plus encore. Le lecteur audio permet de charger un fichier audio, de contrôler la lecture, le volume, la vitesse, et affiche un visualiseur qui interagit avec le logo.
+Le projet combine un générateur de logo interactif avec un lecteur audio doté d'un visualiseur. Les utilisateurs peuvent personnaliser le logo en modifiant le texte, les couleurs, les polices, les formes. Le lecteur audio permet de charger un fichier audio, de contrôler la lecture, le volume, la vitesse, et affiche un visualiseur qui interagit avec le logo.
 
 ## Fonctionnalités
 ### Générateur de Logo
@@ -20,7 +20,6 @@ Le projet combine un générateur de logo interactif avec un lecteur audio doté
   * Rayon de flou
 * Importer une Image de Fond : Utilisez une image comme fond pour le logo.
 * Effets d'Animation :
-  * Aucun
   * Zoom progressif
   * Rotation
   * Effet de rebond

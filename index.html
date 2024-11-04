@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Importation des polices -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&family=Lobster&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&family=Raleway:wght@400;700&display=swap">
+  <script type="module" src="./Components/logo-generator.js"></script>
+  <script type="module" src="./Components/audio-player.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <title>Générateur de Logo et Lecteur Audio Augmenté</title>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Section du générateur de logo -->
+    <div class="logo-section">
+      <h2>Générateur de Logo</h2>
+      <div class="form-container">
+    <form>
+      <!-- Contrôles existants -->
+      <div>
+        <label for="logo-text">Texte du Logo :</label>
+        <input type="text" id="logo-text" value="Votre Logo" />
+      </div>
+
+      <div>
+        <label for="logo-color">Couleur du Texte :</label>
+        <input type="color" id="logo-color" value="#ff4500" />
+      </div>
+
+      <div>
+        <label for="logo-size">Taille du Texte :</label>
+        <input type="range" id="logo-size" min="10" max="200" value="80" />
+      </div>
+
+      <div>
+        <label for="logo-font">Police du Texte :</label>
+        <select id="logo-font">
+          <option value="Roboto">Roboto</option>
+          <option value="Pacifico">Pacifico</option>
+          <option value="Lobster">Lobster</option>
+          <option value="Montserrat">Montserrat</option>
+          <option value="Open Sans">Open Sans</option>
+          <option value="Playfair Display">Playfair Display</option>
+          <option value="Raleway">Raleway</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="shape-type">Forme de Fond :</label>
+        <select id="shape-type">
+          <option value="rectangle">Rectangle</option>
+          <option value="circle">Cercle</option>
+          <option value="hexagon">Hexagone</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="shape-color">Couleur de la Forme :</label>
+        <input type="color" id="shape-color" value="#cccccc" />
+      </div>
+
+      <!-- Contrôles pour l'ombrage du texte -->
+      <h3>Options d'ombrage du texte :</h3>
+
+      <div>
+        <label for="shadow-color">Couleur de l'Ombre :</label>
+        <input type="color" id="shadow-color" value="#000000" />
+      </div>
+
+      <div>
+        <label for="shadow-offset-x">Décalage X de l'Ombre :</label>
+        <input type="range" id="shadow-offset-x" min="-50" max="50" value="0" />
+      </div>
+
+      <div>
+        <label for="shadow-offset-y">Décalage Y de l'Ombre :</label>
+        <input type="range" id="shadow-offset-y" min="-50" max="50" value="0" />
+      </div>
+
+      <div>
+        <label for="shadow-blur">Rayon de Flou de l'Ombre :</label>
+        <input type="range" id="shadow-blur" min="0" max="50" value="0" />
+      </div>
+
+      <!-- Contrôle pour importer une image de fond -->
+      <h3>Importer une image de fond :</h3>
+
+      <div>
+        <label for="background-image-upload">Importer une Image :</label>
+        <input type="file" id="background-image-upload" accept="image/*" />
+      </div>
+
+      <!-- Contrôle pour sélectionner l'effet d'animation -->
+      <h3>Effets d'animation :</h3>
+
+      <div>
+        <label for="animation-type">Sélectionner un Effet :</label>
+        <select id="animation-type">
+          <option value="none">Aucun</option>
+          <option value="zoom">Zoom progressif</option>
+          <option value="rotation">Rotation</option>
+          <option value="bounce">Effet de rebond</option>
+          <option value="fade">Apparition par fade</option>
+          <option value="typing">Effet de frappe</option>
+          <option value="scroll">Défilement de texte</option>
+        </select>
+      </div>
+
+      <!-- Nouveaux contrôles pour la bordure du texte -->
+      <h3>Bordure du texte :</h3>
+
+      <div>
+        <label for="border-color">Couleur de la Bordure :</label>
+        <input type="color" id="border-color" value="#000000" />
+      </div>
+
+      <div>
+        <label for="border-width">Épaisseur de la Bordure :</label>
+        <input type="range" id="border-width" min="0" max="10" value="0" />
+      </div>
+
+      <div>
+        <label for="logo-position">Position du Logo :</label>
+        <select id="logo-position">
+          <option value="center">Centre</option>
+          <option value="top">Haut</option>
+          <option value="bottom">Bas</option>
+          <option value="left">Gauche</option>
+          <option value="right">Droite</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <!-- Aperçu du logo -->
+  <div class="logo-preview">
+    <logo-generator
+      id="logo"
+      text="Votre Logo"
+      color="#ff4500"
+      size="80"
+      font="Roboto"
+      shape="rectangle"
+      shape-color="#cccccc"
+      shadow-color="#000000"
+      shadow-offset-x="0"
+      shadow-offset-y="0"
+      shadow-blur="0"
+      background-image-src=""
+      animation-type="none"
+      border-color="#000000"
+      border-width="0"
+      logo-position="center"
+    ></logo-generator>
+  </div>
+
+  <!-- Section du lecteur audio augmenté -->
+  <div class="audio-section">
+    <h2>Lecteur Audio Augmenté</h2>
+    <!-- Formulaire du lecteur audio -->
+    <div class="form-container">
+      <form>
+        <div>
+          <label for="audio-file-input">Choisir un fichier audio :</label>
+          <input type="file" id="audio-file-input" accept="audio/*" />
+        </div>
+
+        <div>
+          <button type="button" id="play-button">Lecture</button>
+          <button type="button" id="pause-button">Pause</button>
+          <button type="button" id="stop-button">Arrêter</button>
+        </div>
+
+        <div>
+          <label for="volume-control">Volume :</label>
+          <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" />
+        </div>
+
+        <div>
+          <label for="speed-control">Vitesse :</label>
+          <button type="button" id="speed-down-button">-</button>
+          <span id="speed-display">1.0x</span>
+          <button type="button" id="speed-up-button">+</button>
+        </div>
+
+        <div>
+          <label for="visualizer-position">Position du Visualiseur :</label>
+          <select id="visualizer-position">
+            <option value="around">Autour</option>
+            <option value="inside">À l'intérieur</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <!-- Lecteur Audio -->
+    <audio-player
+      id="audio-player"
+      visualizer-shape="rectangle"
+      logo-position="center"
+      visualizer-position="around"
+      shape="rectangle"
+    ></audio-player>
+  </div>
+</div>
+
+   <!-- Script pour le générateur de logo -->
+  <script>
+    // Mise à jour du logo en fonction des entrées de l'utilisateur
+    const logoElement = document.getElementById('logo');
+    const textInput = document.getElementById('logo-text');
+    const colorInput = document.getElementById('logo-color');
+    const sizeInput = document.getElementById('logo-size');
+    const fontSelect = document.getElementById('logo-font');
+    const shapeSelect = document.getElementById('shape-type');
+    const shapeColorInput = document.getElementById('shape-color');
+
+    // Contrôles pour l'ombrage du texte
+    const shadowColorInput = document.getElementById('shadow-color');
+    const shadowOffsetXInput = document.getElementById('shadow-offset-x');
+    const shadowOffsetYInput = document.getElementById('shadow-offset-y');
+    const shadowBlurInput = document.getElementById('shadow-blur');
+
+    // Contrôle pour importer une image de fond
+    const backgroundImageUpload = document.getElementById('background-image-upload');
+
+    // Contrôle pour sélectionner l'effet d'animation
+    const animationTypeSelect = document.getElementById('animation-type');
+
+    // Contrôles pour la bordure du texte
+    const borderColorInput = document.getElementById('border-color');
+    const borderWidthInput = document.getElementById('border-width');
+
+    // Contrôle pour la position du logo
+    const logoPositionSelect = document.getElementById('logo-position');
+
+    textInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('text', e.target.value);
+    });
+
+    colorInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('color', e.target.value);
+    });
+
+    sizeInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('size', e.target.value);
+    });
+
+    fontSelect.addEventListener('change', (e) => {
+      logoElement.setAttribute('font', e.target.value);
+    });
+
+    shapeSelect.addEventListener('change', (e) => {
+      logoElement.setAttribute('shape', e.target.value);
+    });
+
+    shapeColorInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('shape-color', e.target.value);
+    });
+
+    // Écouteurs pour l'ombrage du texte
+    shadowColorInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('shadow-color', e.target.value);
+    });
+
+    shadowOffsetXInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('shadow-offset-x', e.target.value);
+    });
+
+    shadowOffsetYInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('shadow-offset-y', e.target.value);
+    });
+
+    shadowBlurInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('shadow-blur', e.target.value);
+    });
+
+    // Écouteur pour l'importation de l'image de fond
+    backgroundImageUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          logoElement.setAttribute('background-image-src', event.target.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        // Si aucun fichier n'est sélectionné, on supprime l'attribut
+        logoElement.setAttribute('background-image-src', '');
+      }
+    });
+
+    // Écouteur pour le type d'animation
+    animationTypeSelect.addEventListener('change', (e) => {
+      logoElement.setAttribute('animation-type', e.target.value);
+    });
+
+    // Écouteurs pour la bordure du texte
+    borderColorInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('border-color', e.target.value);
+    });
+
+    borderWidthInput.addEventListener('input', (e) => {
+      logoElement.setAttribute('border-width', e.target.value);
+    });
+
+    // Écouteur pour la position du logo
+    logoPositionSelect.addEventListener('change', (e) => {
+    logoElement.setAttribute('logo-position', e.target.value);
+  });
+  </script>
+
+  <!-- Script pour le lecteur audio -->
+  <script>
+    // Récupération des éléments du DOM
+    const audioPlayerElement = document.getElementById('audio-player');
+    const audioFileInput = document.getElementById('audio-file-input');
+    const playButton = document.getElementById('play-button');
+    const pauseButton = document.getElementById('pause-button');
+    const stopButton = document.getElementById('stop-button');
+    const volumeControl = document.getElementById('volume-control');
+    const speedDownButton = document.getElementById('speed-down-button');
+    const speedUpButton = document.getElementById('speed-up-button');
+    const speedDisplay = document.getElementById('speed-display');
+    const visualizerPositionSelect = document.getElementById('visualizer-position');
+
+
+    // Variables pour la vitesse de lecture
+    let playbackRate = 1.0;
+
+    // Gestion du chargement du fichier audio
+    audioFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        audioPlayerElement.setAttribute('src', fileURL);
+      }
+    });
+
+    // Contrôles de lecture
+    playButton.addEventListener('click', () => {
+      audioPlayerElement.playAudio();
+    });
+
+    pauseButton.addEventListener('click', () => {
+      audioPlayerElement.pauseAudio();
+    });
+
+    stopButton.addEventListener('click', () => {
+      audioPlayerElement.stopAudio();
+    });
+
+    // Contrôle du volume
+    volumeControl.addEventListener('input', (e) => {
+      audioPlayerElement.setVolume(e.target.value);
+    });
+
+    // Contrôle de la vitesse
+    speedDownButton.addEventListener('click', () => {
+      playbackRate = Math.max(0.5, playbackRate - 0.1);
+      playbackRate = parseFloat(playbackRate.toFixed(1));
+      audioPlayerElement.setPlaybackRate(playbackRate);
+      speedDisplay.textContent = playbackRate + 'x';
+    });
+
+    speedUpButton.addEventListener('click', () => {
+      playbackRate = Math.min(2.0, playbackRate + 0.1);
+      playbackRate = parseFloat(playbackRate.toFixed(1));
+      audioPlayerElement.setPlaybackRate(playbackRate);
+      speedDisplay.textContent = playbackRate + 'x';
+    });
+
+    // Écouteur pour la position du visualiseur
+  visualizerPositionSelect.addEventListener('change', (e) => {
+    audioPlayerElement.setAttribute('visualizer-position', e.target.value);
+  });
+
+  // Synchronisation de la position du logo entre les deux composants
+  logoPositionSelect.addEventListener('change', (e) => {
+    const position = e.target.value;
+    logoElement.setAttribute('logo-position', position);
+    audioPlayerElement.setAttribute('logo-position', position);
+  });
+  </script>
+</body>
+</html>
